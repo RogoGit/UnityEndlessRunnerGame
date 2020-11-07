@@ -6,6 +6,7 @@ public class TileManager : MonoBehaviour
 {
 
     public GameObject[] roadTilesPrefabs;
+    public GameObject waterPrefab;
     private int tilesOnScreenNum = 10; // how many tiles we want to display
     private float spawnPosition = -22.0f; //z coordinate of new tile
     private float tileLength = 22.0f; // size of one tile
@@ -13,6 +14,11 @@ public class TileManager : MonoBehaviour
     private List<GameObject> actualTiles; // list of tiles which we currently need
     private Transform runnerTrasnform;
     private int lastTileRenderedIndex = 0; // what tile type was rendered
+
+    private float spawnWaterPosition = -25.0f;
+    private float waterPoolLength = 360.0f;
+    private int waterOnScreenNum = 2;
+    private List<GameObject> actualPools;
 
     // Creating new tile
     private void createTile(int prefabInd = -1)
@@ -22,10 +28,22 @@ public class TileManager : MonoBehaviour
             tile = Instantiate(roadTilesPrefabs[randomizeNextTile()]) as GameObject;
         else 
             tile = Instantiate(roadTilesPrefabs[prefabInd]) as GameObject;
-        tile.transform.SetParent(transform);
+        //tile.transform.SetParent(transform);
         tile.transform.position = Vector3.forward * spawnPosition;
         actualTiles.Add(tile);
         spawnPosition += tileLength;
+    }
+
+    private void spawnWater() 
+    {
+        GameObject water;
+        water = Instantiate(waterPrefab) as GameObject;
+        Vector3 waterPosition = water.transform.position;
+        waterPosition = Vector3.forward * spawnWaterPosition;
+        waterPosition.y = -0.5f;
+        water.transform.position = waterPosition;
+        actualPools.Add(water);
+        spawnWaterPosition += waterPoolLength;
     }
 
     // deleting tiles we don't need anymore
@@ -34,6 +52,12 @@ public class TileManager : MonoBehaviour
     {
         Destroy(actualTiles[0]);
         actualTiles.RemoveAt(0);
+    }
+
+    private void destroyWater()
+    {
+        Destroy(actualPools[0]);
+        actualPools.RemoveAt(0);
     }
 
     // making tiles random 
@@ -59,9 +83,16 @@ public class TileManager : MonoBehaviour
     void Start()
     {
         actualTiles = new List<GameObject>();
+        actualPools = new List<GameObject>();
         // we decide should we generate new part of path according to current player position
         // getting player position
         runnerTrasnform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        for (int i=0; i < waterOnScreenNum; i++)
+        {
+            spawnWater();
+        }
+
         // generate some tiles
         for (int i=0; i < tilesOnScreenNum; i++)
         {
@@ -79,6 +110,13 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (runnerTrasnform.position.z - 400 > (spawnWaterPosition - waterOnScreenNum * waterPoolLength))
+        {
+            spawnWater();
+            destroyWater();
+        }
+
         // the end of the road is near - spawn some more tiles
         if (runnerTrasnform.position.z - noTilesDestroyingDistance > (spawnPosition - tilesOnScreenNum * tileLength))
         {
