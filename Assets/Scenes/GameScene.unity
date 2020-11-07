@@ -158,6 +158,8 @@ MonoBehaviour:
   - {fileID: 5497004346063123580, guid: 56b1b50a3f29f540e80822f970280817, type: 3}
   - {fileID: 8112814346231896106, guid: 4fbcddffe5262a00c9da24ef90f9f821, type: 3}
   - {fileID: 5217901392342587511, guid: 50f5f4b8f3110f83fb7ecffd2c15742c, type: 3}
+  - {fileID: 8558414455707216002, guid: 821cac79c823635ac9dc88f39da05430, type: 3}
+  - {fileID: 497314928956332690, guid: c030c6e3b044c959babc76dd4b7d3e67, type: 3}
   waterPrefab: {fileID: 149962, guid: 58c25a420e6882147886b21744a277c7, type: 3}
 --- !u!4 &292370645
 Transform:

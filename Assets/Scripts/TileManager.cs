@@ -8,8 +8,8 @@ public class TileManager : MonoBehaviour
     public GameObject[] roadTilesPrefabs;
     public GameObject waterPrefab;
     private int tilesOnScreenNum = 10; // how many tiles we want to display
-    private float spawnPosition = -22.0f; //z coordinate of new tile
-    private float tileLength = 22.0f; // size of one tile
+    private float spawnPosition = -22.7f; //z coordinate of new tile
+    private float tileLength = 22.7f; // size of one tile
     private float noTilesDestroyingDistance = 30.0f; //how long we shouldn't destroy any tiles 
     private List<GameObject> actualTiles; // list of tiles which we currently need
     private Transform runnerTrasnform;
