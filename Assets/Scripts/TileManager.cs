@@ -12,13 +12,17 @@ public class TileManager : MonoBehaviour
     private float noTilesDestroyingDistance = 30.0f; //how long we shouldn't destroy any tiles 
     private List<GameObject> actualTiles; // list of tiles which we currently need
     private Transform runnerTrasnform;
+    private int lastTileRenderedIndex = 0; // what tile type was rendered
 
     // Creating new tile
     private void createTile(int prefabInd = -1)
     {
         GameObject tile;
-        tile = Instantiate(roadTilesPrefabs[0]) as GameObject;
-        //tile.transform.SetParent(transform);
+        if (prefabInd == -1)
+            tile = Instantiate(roadTilesPrefabs[randomizeNextTile()]) as GameObject;
+        else 
+            tile = Instantiate(roadTilesPrefabs[prefabInd]) as GameObject;
+        tile.transform.SetParent(transform);
         tile.transform.position = Vector3.forward * spawnPosition;
         actualTiles.Add(tile);
         spawnPosition += tileLength;
@@ -32,6 +36,25 @@ public class TileManager : MonoBehaviour
         actualTiles.RemoveAt(0);
     }
 
+    // making tiles random 
+    private int randomizeNextTile()
+    {
+        if (roadTilesPrefabs.Length <= 1)
+        {
+            return 0;
+        }
+
+        int randomIndex = lastTileRenderedIndex;
+        while(randomIndex == lastTileRenderedIndex)
+        {
+            randomIndex = Random.Range(0, roadTilesPrefabs.Length);
+        }
+
+        lastTileRenderedIndex = randomIndex;
+        return randomIndex;
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +65,14 @@ public class TileManager : MonoBehaviour
         // generate some tiles
         for (int i=0; i < tilesOnScreenNum; i++)
         {
-            createTile();
+            if (i < 3)
+            {
+                createTile(0);
+            }
+            else
+            {
+                createTile();
+            }
         }
     }
 
