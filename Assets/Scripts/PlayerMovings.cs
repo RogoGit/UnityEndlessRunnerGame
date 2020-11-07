@@ -9,6 +9,7 @@ public class PlayerMovings : MonoBehaviour
     private float characterSpeed = 5.0f;
     private float verticalSpeed = 0.0f;
     private float gravity = 12.0f;
+    private float animationDuration = 2.0f; // 2 seconds
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,14 @@ public class PlayerMovings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // game start animation
+        if (Time.time < animationDuration) 
+        {
+            controller.Move(Vector3.forward * characterSpeed * Time.deltaTime);
+            return;
+        }
+
         moveVector = Vector3.zero; // reseting direction every frame
 
         // check if player is on the floor
