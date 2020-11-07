@@ -7,8 +7,10 @@ public class TileManager : MonoBehaviour
 
     public GameObject[] roadTilesPrefabs;
     private int tilesOnScreenNum = 10; // how many tiles we want to display
-    private float spawnPosition = 0.0f; //z coordinate of new tile
+    private float spawnPosition = -22.0f; //z coordinate of new tile
     private float tileLength = 22.0f; // size of one tile
+    private float noTilesDestroyingDistance = 30.0f; //how long we shouldn't destroy any tiles 
+    private List<GameObject> actualTiles; // list of tiles which we currently need
     private Transform runnerTrasnform;
 
     // Creating new tile
@@ -18,12 +20,22 @@ public class TileManager : MonoBehaviour
         tile = Instantiate(roadTilesPrefabs[0]) as GameObject;
         //tile.transform.SetParent(transform);
         tile.transform.position = Vector3.forward * spawnPosition;
+        actualTiles.Add(tile);
         spawnPosition += tileLength;
+    }
+
+    // deleting tiles we don't need anymore
+    // destroying first element of actual tiles list
+    private void destroyTile()
+    {
+        Destroy(actualTiles[0]);
+        actualTiles.RemoveAt(0);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        actualTiles = new List<GameObject>();
         // we decide should we generate new part of path according to current player position
         // getting player position
         runnerTrasnform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -38,9 +50,10 @@ public class TileManager : MonoBehaviour
     void Update()
     {
         // the end of the road is near - spawn some more tiles
-        if (runnerTrasnform.position.z > (spawnPosition - tilesOnScreenNum * tileLength))
+        if (runnerTrasnform.position.z - noTilesDestroyingDistance > (spawnPosition - tilesOnScreenNum * tileLength))
         {
             createTile();
+            destroyTile();
         }
     }
 }
