@@ -6,7 +6,7 @@ public class PlayerMovings : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 moveVector;
-    private float characterSpeed = 5.0f;
+    private float characterSpeed = 10.0f;
     private float verticalSpeed = 0.0f;
     private float gravity = 12.0f;
     private float animationDuration = 2.0f; // 2 seconds
