@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &5242947929934570780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289997604308958562}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2181575, y: 1.0852846, z: 1.3590603}
+  m_Center: {x: 0.08032988, y: 0.4202339, z: -0.7315903}
+--- !u!65 &8017553480075247323
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289997604470131938}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99404705, y: 2.7463386, z: 1.3223549}
+  m_Center: {x: 0.081289336, y: 1.2507609, z: 0.090346076}
 --- !u!1 &5217901392342587511
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +127,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3517325933a4f02419b118e4ac715d2e, type: 3}
+--- !u!1 &289997604308958562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 146148, guid: 3517325933a4f02419b118e4ac715d2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 289997604309075846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &289997604308666690 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 446148, guid: 3517325933a4f02419b118e4ac715d2e,
@@ -172,6 +204,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3517325933a4f02419b118e4ac715d2e, type: 3}
+--- !u!1 &289997604470131938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 146148, guid: 3517325933a4f02419b118e4ac715d2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 289997604470273542}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &289997604470454466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 446148, guid: 3517325933a4f02419b118e4ac715d2e,

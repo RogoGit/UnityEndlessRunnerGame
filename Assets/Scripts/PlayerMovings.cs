@@ -58,4 +58,11 @@ public class PlayerMovings : MonoBehaviour
 
         controller.Move(moveVector * Time.deltaTime);
     }
+
+    // called every time player hits
+/*    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        hit.
+    }*/
+
 }
