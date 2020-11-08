@@ -26,7 +26,7 @@ public class DeathMenuScript : MonoBehaviour
     // return to main menu
     public void backToMenu()
     {
-        // will be later
+         SceneManager.LoadScene("MainMenuScene");
     }
 
     // Start is called before the first frame update

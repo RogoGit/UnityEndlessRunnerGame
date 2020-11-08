@@ -12,6 +12,7 @@ public class PlayerMovings : MonoBehaviour
     private float gravity = 12.0f;
     private float animationDuration = 2.0f; // 2 seconds
     private bool isPlayerDead = false;
+    private float startTime;
 
     public void setSpeed(int additionalSpeed)
     {
@@ -23,6 +24,7 @@ public class PlayerMovings : MonoBehaviour
     {
         controller = GetComponent<CharacterController> ();
         characterSpeed = defaultSpeed;
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class PlayerMovings : MonoBehaviour
             return;
 
         // game start animation
-        if (Time.time < animationDuration) 
+        if (Time.time - startTime < animationDuration) 
         {
             controller.Move(Vector3.forward * characterSpeed * Time.deltaTime);
             return;

@@ -39,6 +39,7 @@
      <Compile Include="Assets\AssetsStore\GrassRoadRace\Script\CameraMove.cs" />
      <Compile Include="Assets\Scripts\DeathMenuScript.cs" />
      <Compile Include="Assets\Scripts\MainCameraScript.cs" />
+     <Compile Include="Assets\Scripts\MainMenuScript.cs" />
      <Compile Include="Assets\Scripts\PlayerMovings.cs" />
      <Compile Include="Assets\Scripts\ScoreHandler.cs" />
      <Compile Include="Assets\Scripts\TileManager.cs" />
