@@ -19,6 +19,7 @@ public class MainCameraScript : MonoBehaviour
         // searching fpr player object by tag
         lookAt = GameObject.FindGameObjectWithTag("Player").transform;
         camOffset = transform.position - lookAt.position;
+        camOffset.y -= 1.1f;
     }
 
     // Update is called once per frame
@@ -26,7 +27,6 @@ public class MainCameraScript : MonoBehaviour
     {
         moveVector =  lookAt.position + camOffset;
 
-        // restrict camera - in runners we have to see the whole road
         // X axis
         moveVector.x = 0;
         // Y axis
