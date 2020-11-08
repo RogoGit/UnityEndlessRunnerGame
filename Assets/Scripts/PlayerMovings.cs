@@ -6,15 +6,22 @@ public class PlayerMovings : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 moveVector;
-    private float characterSpeed = 10.0f;
+    private float defaultSpeed = 10.0f;
+    private float characterSpeed;
     private float verticalSpeed = 0.0f;
     private float gravity = 12.0f;
     private float animationDuration = 2.0f; // 2 seconds
+
+    public void setSpeed(int additionalSpeed)
+    {
+        characterSpeed = defaultSpeed + (additionalSpeed * 2);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController> ();
+        characterSpeed = defaultSpeed;
     }
 
     // Update is called once per frame
