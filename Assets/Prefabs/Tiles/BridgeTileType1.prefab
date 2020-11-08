@@ -42,8 +42,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.2695906, y: 11.513635, z: 95.5636}
-  m_Center: {x: 11.966687, y: 4.44329, z: 48.267235}
+  m_Size: {x: 3.2695906, y: 0, z: 94.80389}
+  m_Center: {x: 11.966686, y: 10.200108, z: 48.457157}
 --- !u!65 &5823134222680626697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55,8 +55,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.748939, y: 0, z: 97.73945}
-  m_Center: {x: -11.99886, y: -1.3133769, z: 48.36932}
+  m_Size: {x: 4.3617125, y: 0, z: 94.572044}
+  m_Center: {x: -12.192282, y: 10.20011, z: 48.089813}
 --- !u!1001 &7854487988379544286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64,6 +64,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2327913724027555455}
     m_Modifications:
+    - target: {fileID: 147752, guid: be586f7a2d5b1934abf61a0f6b060ac7, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 147756, guid: be586f7a2d5b1934abf61a0f6b060ac7, type: 3}
       propertyPath: m_Name
       value: Bridge_Small

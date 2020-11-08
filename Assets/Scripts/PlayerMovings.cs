@@ -11,6 +11,7 @@ public class PlayerMovings : MonoBehaviour
     private float verticalSpeed = 0.0f;
     private float gravity = 12.0f;
     private float animationDuration = 2.0f; // 2 seconds
+    private bool isPlayerDead = false;
 
     public void setSpeed(int additionalSpeed)
     {
@@ -27,6 +28,10 @@ public class PlayerMovings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // check if player died
+        if (isPlayerDead)
+            return;
 
         // game start animation
         if (Time.time < animationDuration) 
@@ -45,6 +50,7 @@ public class PlayerMovings : MonoBehaviour
         else
         {
             verticalSpeed -= gravity * Time.deltaTime;
+            if (verticalSpeed < -8.0f) DIE();
         }
 
         // Left-right (x axis)
@@ -59,10 +65,22 @@ public class PlayerMovings : MonoBehaviour
         controller.Move(moveVector * Time.deltaTime);
     }
 
-    // called every time player hits
-/*    void OnControllerColliderHit(ControllerColliderHit hit)
+    // player death
+    private void DIE()
     {
-        hit.
-    }*/
+        //Debug.Log("DEAD");
+        isPlayerDead = true;
+        GetComponent<ScoreHandler>().onDeath();
+    }
+
+    // called every time player hits
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        // game must be over only if it is front hit
+        if ((hit.point.z > transform.position.z + controller.radius) && (hit.gameObject.tag == "Obstacle"))
+        {
+            DIE();
+        }
+    }
 
 }

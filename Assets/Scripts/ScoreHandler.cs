@@ -14,6 +14,9 @@ public class ScoreHandler : MonoBehaviour
     private int gameSpeedLevel = 1;
     private int maxGameSpeedLevel = 10;
     private int scoreToIncreaseSpeed = 10; // when game becomes faster
+
+    private bool isPlayerDead = false;
+
     // increasing game speed
     void speedUp()
     {
@@ -22,6 +25,12 @@ public class ScoreHandler : MonoBehaviour
 
         gameSpeedLevel++;
         scoreToIncreaseSpeed *= 2;
+    }
+
+    // on player death action
+    public void onDeath()
+    {
+        isPlayerDead = true;
     }
 
     // Start is called before the first frame update
@@ -33,6 +42,8 @@ public class ScoreHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (isPlayerDead) return;
 
         if (userScore >= scoreToIncreaseSpeed)
         {
