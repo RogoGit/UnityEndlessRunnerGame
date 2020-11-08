@@ -34,6 +34,13 @@ public class ScoreHandler : MonoBehaviour
     public void onDeath()
     {
         isPlayerDead = true;
+        // save user score if it's a highscore
+        if (PlayerPrefs.GetFloat("highscore") < userScore)
+        {
+            PlayerPrefs.SetFloat("highscore", userScore);
+            PlayerPrefs.Save();
+        }
+        // show death menu
         deathMenu.toggleDeathMenu(userScore);
     }
 
