@@ -39,6 +39,7 @@
      <Compile Include="Assets\AssetsStore\GrassRoadRace\Script\CameraMove.cs" />
      <Compile Include="Assets\Scripts\MainCameraScript.cs" />
      <Compile Include="Assets\Scripts\PlayerMovings.cs" />
+     <Compile Include="Assets\Scripts\ScoreHandler.cs" />
      <Compile Include="Assets\Scripts\TileManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/home/dell/UnityFolder/2019.4.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
