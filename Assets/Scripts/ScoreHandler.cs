@@ -17,6 +17,9 @@ public class ScoreHandler : MonoBehaviour
 
     private bool isPlayerDead = false;
 
+    // death menu
+    public DeathMenuScript deathMenu;
+
     // increasing game speed
     void speedUp()
     {
@@ -31,6 +34,7 @@ public class ScoreHandler : MonoBehaviour
     public void onDeath()
     {
         isPlayerDead = true;
+        deathMenu.toggleDeathMenu(userScore);
     }
 
     // Start is called before the first frame update
