@@ -14,6 +14,8 @@ public class PlayerMovings : MonoBehaviour
     private bool isPlayerDead = false;
     private float startTime;
 
+    public Animator anim;
+
     public void setSpeed(int additionalSpeed)
     {
         characterSpeed = defaultSpeed + (additionalSpeed * 2);
@@ -23,6 +25,7 @@ public class PlayerMovings : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController> ();
+        anim.SetBool("isPlayerDead", false);
         characterSpeed = defaultSpeed;
         startTime = Time.time;
     }
@@ -72,6 +75,7 @@ public class PlayerMovings : MonoBehaviour
     {
         //Debug.Log("DEAD");
         isPlayerDead = true;
+        anim.SetBool("isPlayerDead", true);
         GetComponent<ScoreHandler>().onDeath();
     }
 
