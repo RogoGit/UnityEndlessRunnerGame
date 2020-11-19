@@ -41,7 +41,7 @@ public class MainCameraScript : MonoBehaviour
         {
             // animation on game starting
             transform.position = Vector3.Lerp(moveVector + animCamOffset, moveVector, transition); //linear interpolation
-            transition += Time.deltaTime * 1 / animationDuration;
+            transition += Time.deltaTime * (1 / animationDuration);
             transform.LookAt(lookAt.position + Vector3.up);
         }
         

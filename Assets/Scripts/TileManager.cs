@@ -28,7 +28,6 @@ public class TileManager : MonoBehaviour
             tile = Instantiate(roadTilesPrefabs[randomizeNextTile()]) as GameObject;
         else 
             tile = Instantiate(roadTilesPrefabs[prefabInd]) as GameObject;
-        //tile.transform.SetParent(transform);
         tile.transform.position = Vector3.forward * spawnPosition;
         actualTiles.Add(tile);
         spawnPosition += tileLength;
