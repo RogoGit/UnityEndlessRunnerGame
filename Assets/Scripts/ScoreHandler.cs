@@ -30,6 +30,14 @@ public class ScoreHandler : MonoBehaviour
         scoreToIncreaseSpeed *= 2;
     }
 
+    public void setGameSpeedLevel(int speed) {
+        gameSpeedLevel = speed;
+    }
+
+    public int getGameSpeedLevel() {
+        return gameSpeedLevel;
+    }
+
     // on player death action
     public void onDeath()
     {
@@ -56,18 +64,20 @@ public class ScoreHandler : MonoBehaviour
 
         if (isPlayerDead) return;
 
-        if (userScore >= scoreToIncreaseSpeed)
-        {
-            speedUp();
+        if (!GetComponent<PlayerMovings>().getIsOnWater()) {
+            if (userScore >= scoreToIncreaseSpeed)
+            {
+                speedUp();
+            }  
+
+            // increase player speed
+            GetComponent<PlayerMovings>().setSpeed(gameSpeedLevel);
         }
 
         // updating current score
         userScore += Time.deltaTime * gameSpeedLevel;
         // updating current score in UI
-        uiTextScore.text =  ((int)userScore).ToString();   
-
-        // increase player speed
-        GetComponent<PlayerMovings>().setSpeed(gameSpeedLevel);
+        uiTextScore.text =  ((int)userScore).ToString(); 
 
     }
 }
